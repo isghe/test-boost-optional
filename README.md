@@ -31,9 +31,12 @@ two
 one
 three
 void Test5()
+void Test6()
+uninitializedInt is uninitialized!
+uninitializedInt:  2
 ```
 ##
 ```
 $ ./main.out | sha256
-815374027b70f67ac340d46882815e2e841389c8e1e8f7185e200af60eacca96
+5a95a74714850b5ea995cde4cb15b8674a3371c4a9c7766b632c55208f5cf96e
 ```

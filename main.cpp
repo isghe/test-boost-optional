@@ -2,6 +2,7 @@
 #include <cassert>
 #include <boost/optional/optional.hpp>
 #include <algorithm>
+#include <boost/optional/optional_io.hpp>
 
 enum class ETest{
 	FIRST,
@@ -130,6 +131,21 @@ static void Test5 (void){
 	assert (test);
 }
 
+static void Test6 (void){
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	boost::optional<int> uninitializedInt;
+	if (!uninitializedInt){
+		std::cout << "uninitializedInt is uninitialized!"<< std::endl;
+		uninitializedInt = 1;
+		(*uninitializedInt)++;
+		assert (2 == uninitializedInt);
+		assert (uninitializedInt == 2);
+		assert (2 == *uninitializedInt);
+		assert (*uninitializedInt == 2);
+		std::cout << "uninitializedInt: " << uninitializedInt << std::endl;
+	}
+}
+
 int main (void){
 	try{
 		Test1 ();
@@ -137,6 +153,7 @@ int main (void){
 		Test3 ();
 		Test4 ();
 		Test5 ();
+		Test6 ();
 	}
 	catch (const std::exception &exception){
 		std::cout << exception.what() << std::endl;
